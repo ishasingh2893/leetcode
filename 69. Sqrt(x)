@@ -19,3 +19,43 @@ class Solution:
         introot = Solution.search_linear(Solution, lowerbound, x)
         return int(introot)
         
+
+
+#################################################################
+#################################################################
+#################################################################
+#################################################################
+#################################################################
+
+
+class Solution:
+    def isinInterval(self, interval: list, n: int) -> bool:
+        a, b = interval
+        return a*a <= n and (b+1)*(b+1) > n
+
+    def breakInterval(self, interval: list, n: int) -> list:
+        a, b = interval
+        leftInterval = [ a, (a + b) // 2 ]
+
+        if Solution.isinInterval(Solution, leftInterval, n):
+            return leftInterval
+        
+        rightInterval = [ ( a + b ) // 2 + 1, b ]
+        return rightInterval
+        
+
+    def mySqrt(self, n: int) -> int:
+        if n == 0:
+            return 0
+        a = 1
+        b = n
+        while a != b:
+            interval = [a, b]
+            a, b = Solution.breakInterval(Solution, interval, n)
+            #print(interval)
+
+        return a
+
+
+
+        
