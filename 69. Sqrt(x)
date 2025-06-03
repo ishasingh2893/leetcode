@@ -1,0 +1,21 @@
+class Solution:
+    def get_lowerbound(self, n: int ) -> int:
+        lowerbound = 1
+        while lowerbound*lowerbound <= n:
+            lowerbound *= 2
+        return lowerbound/2
+    def search_linear(self, k: int, n: int) -> int:
+        notfound = True
+        while notfound:
+            if k*k <= n and (k+1)*(k+1) > n:
+                notfound = False
+            else:
+                k += 1
+        return k
+    def mySqrt(self, x: int) -> int:
+        if x == 0:
+            return 0
+        lowerbound = Solution.get_lowerbound(Solution, x)
+        introot = Solution.search_linear(Solution, lowerbound, x)
+        return int(introot)
+        
